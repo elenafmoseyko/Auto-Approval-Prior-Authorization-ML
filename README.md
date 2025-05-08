@@ -71,6 +71,7 @@ Model outputs were evaluated at various decision thresholds:
 
 ## 📁 Repository Structure
 
+```text
 healthy-pets-auto-approval-ml/
 ├── healthy_pets_prior_auth_model.ipynb           # Machine learning model notebook
 ├── Presentation_Healthy_Pets_AutoApproval_Model_Presentation.pptx  # Summary slides
