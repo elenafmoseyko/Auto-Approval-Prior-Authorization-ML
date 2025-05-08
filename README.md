@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project addresses inefficiencies in the prior authorization (PA) process for veterinary procedures. Healthy Pets receives requests that must be evaluated for coverage and clinical appropriateness. Some are handled by rule-based systems, but many require manual review—creating delays, operational burden, and inconsistency. This repository presents a machine learning model to predict which PA requests can be safely auto-approved.
+This project addresses inefficiencies in the prior authorization (PA) process for veterinary procedures. Healthy Pets receives requests that must be evaluated for coverage and clinical appropriateness. Some are handled by rule-based systems, but many require manual review - creating delays, operational burden, and inconsistency. This repository presents a machine learning model to predict which PA requests can be safely auto-approved.
 
 ## 📌 Objective
 
@@ -42,9 +42,9 @@ This flow represents how PA requests move through the ML pipeline:
 3. Feature Engineering (Claims, Timing, Provider History)
 4. ML Prediction (Random Forest)
 5. Threshold Decision (e.g., 0.90)
-6a. Auto-Approval ✅
-6b. Manual Review 👀
-7. Manual Decision Outcome 📝
+6a. Auto-Approval 
+6b. Manual Review 
+7. Manual Decision Outcome 
 
 ## 📈 Evaluation
 
