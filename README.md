@@ -75,5 +75,6 @@ healthy-pets-auto-approval-ml/
 ├── healthy_pets_prior_auth_model.ipynb          # ML model notebook
 ├── Presentation_Healthy_Pets_AutoApproval_Model_Presentation.pptx  # Summary deck
 ├── diagram.png                                  # Auto-Approval Flowchart
-└── README.md                                     # Project documentation
+└── README.md                                    # Project documentation
+
 
