@@ -1,63 +1,78 @@
-🐾 Healthy Pets Auto-Approval Machine Learning Model
-Overview
-This project aims to reduce the operational burden and delays associated with manual review of prior authorization requests in the pet insurance domain. Healthy Pets receives thousands of such requests from veterinarians, some of which are currently processed through rule-based systems, while others require manual intervention. This machine learning model provides a data-driven approach to predict which requests can be confidently auto-approved.
+# 🐾 Healthy Pets Auto-Approval Machine Learning Model
 
-📌 Objective
-Develop and deploy a classification model to:
+## Overview
 
-Predict if a prior authorization (PA) request should be auto-approved.
+This project addresses inefficiencies in the prior authorization (PA) process for veterinary procedures. Healthy Pets receives requests that must be evaluated for coverage and clinical appropriateness. Some are handled by rule-based systems, but many require manual review—creating delays, operational burden, and inconsistency. This repository presents a machine learning model to predict which PA requests can be safely auto-approved.
 
-Complement existing rule-based logic.
+## 📌 Objective
 
-Reduce manual workload while maintaining clinical safety and appropriateness.
+- Predict whether a PA request should be auto-approved using machine learning.
+- Reduce manual reviews while maintaining clinical appropriateness.
+- Seamlessly integrate with existing rule-based systems.
 
-📊 Data Exploration & Insights
-Key insights from exploratory analysis:
+## 📊 Data Exploration & Insights
 
-72.5% of PA requests were approved.
+Key findings from a dataset of ~1,900 prior authorization requests:
+- **72.5%** were approved.
+- Approval likelihood increases for routine procedures (e.g., check-ups).
+- Providers and prior history (claims, approvals) influence decision outcomes.
+- Time since last request or claim is a strong predictor: “cold cases” tend to be denied.
 
-Approval likelihood increases for routine procedures (e.g., check-ups).
+## 🧠 Modeling Approach
 
-Time since last claim/auth, provider history, and pet service history significantly influence approval chances.
+Three models were evaluated:
+- Logistic Regression  
+- Random Forest  
+- XGBoost  
 
-Cold cases (long gaps in prior history) are less likely to be approved.
+The **Random Forest** model was selected for its high F1 score and interpretability.
 
-🧠 Modeling Approach
-Three classification models were evaluated:
+### Feature Engineering Highlights:
+- Prior approvals and claims history
+- Provider/service-level patterns
+- Time-based features
 
-Logistic Regression
+## 🔄 ML Auto-Approval Flow
 
-Random Forest
+![ML Auto-Approval Diagram](diagram.png)
 
-XGBoost
+This flow represents how PA requests move through the ML pipeline:
+1. Submission (PA Request)
+2. Preprocessing (Data Cleaning & Transformation)
+3. Feature Engineering (Claims, Timing, Provider History)
+4. ML Prediction (Random Forest)
+5. Threshold Decision (e.g., 0.90)
+6a. Auto-Approval ✅
+6b. Manual Review 👀
+7. Manual Decision Outcome 📝
 
-After tuning and performance evaluation, Random Forest was selected due to:
+## 📈 Evaluation
 
-Strong F1 score (0.873)
+Model outputs were evaluated at various decision thresholds:
 
-High interpretability via feature importance
+| Threshold | Precision | Recall | F1 Score | Auto-Approval Rate |
+|-----------|-----------|--------|----------|--------------------|
+| **0.47** (Balanced) | 88% | 86% | 0.87 | ~74% |
+| **0.90** (Conservative) | 98% | 42% | 0.58 | ~29% |
 
-Feature Engineering Highlights:
-Prior approvals and claims history
+## ✅ Recommendations
 
-Provider and service-specific patterns
+- **Start with threshold = 0.90** to prioritize safety.
+- Monitor precision, recall, and auto-approval rates in production.
+- Use manual review for all low-confidence cases.
+- Gradually lower the threshold after validation to expand automation coverage.
 
-Time-based features (e.g., time since last claim)
+## 🚀 Next Steps
 
-📈 Evaluation
-The model outputs probabilities which allow threshold tuning:
+- Deploy the model in a pilot phase with selected providers or services.
+- Continuously monitor model performance and manual review alignment.
+- Retrain periodically with new data and feedback.
+- Expand automation scope once real-world performance is validated.
 
-Threshold	Precision	Recall	F1 Score	Auto-Approval Rate
-0.47 (Balanced)	88%	86%	0.87	~74%
-0.90 (Conservative)	98%	42%	0.58	~29%
+## 📁 Repository Structure
+healthy-pets-auto-approval-ml/
+├── healthy_pets_prior_auth_model.ipynb # ML model notebook
+├── Presentation_Healthy_Pets_AutoApproval_Model_Presentation.pptx # Summary deck
+├── diagram.png # Auto-Approval Flowchart
+└── README.md # Project documentation
 
-✅ Recommendations
-Initial Deployment: Use threshold = 0.90 for conservative rollout.
-
-Monitoring: Track performance metrics (precision, recall, approval rate) continuously.
-
-Human Oversight: Manually review all non-auto-approved requests.
-
-Pilot First: Begin with select providers/services before scaling.
-
-Retraining: Incorporate feedback loops and periodic model updates.
