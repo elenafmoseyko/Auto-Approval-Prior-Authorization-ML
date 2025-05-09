@@ -9,6 +9,12 @@ This project addresses inefficiencies in the prior authorization (PA) process fo
 - Predict whether a PA request should be auto-approved using machine learning.
 - Reduce manual reviews while maintaining clinical appropriateness.
 - Seamlessly integrate with existing rule-based systems.
+  
+## 📂 Data Access
+
+The dataset used in this project was provided as part of a private case study by a company and is not publicly shareable.
+
+However, the notebook and code are designed to work with any structured dataset containing prior authorization records (e.g., approval status, procedure type, provider info, claim history). You may adapt it using synthetic or public data with a similar schema.
 
 ## 📊 Data Exploration & Insights
 
